@@ -1,9 +1,14 @@
 /**
+Question:
+ https://goo.gl/DA9kuJ
+ 
  * @param {string} moves
  * @return {boolean}
  count the U char should equal with D
  count the L char should equal with R
- https://goo.gl/DA9kuJ
+ 
+ reference:
+ https://stackoverflow.com/questions/881085/count-the-number-of-occurrences-of-a-character-in-a-string-in-javascript
  */
 var judgeCircle = function(moves) {
     Ucount = moves.split("U").length -1
