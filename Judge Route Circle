@@ -1,0 +1,18 @@
+/**
+ * @param {string} moves
+ * @return {boolean}
+ count the U char should equal with D
+ count the L char should equal with R
+ https://goo.gl/DA9kuJ
+ */
+var judgeCircle = function(moves) {
+    Ucount = moves.split("U").length -1
+    Dcount = moves.split("D").length -1
+    Lcount = moves.split("L").length -1
+    Rcount = moves.split("R").length -1
+    if(Ucount == Dcount && Lcount == Rcount){
+        return true
+    }else{
+        return false
+    }
+};
