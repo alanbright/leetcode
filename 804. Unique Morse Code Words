@@ -1,0 +1,23 @@
+var uniqueMorseRepresentations = function(words) {
+    var morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
+    var resultArray = new Array();
+    //console.log("words",words)
+    for(j in words){
+        var morseResult="";
+        var word = words[j];
+        //console.log("words[j]", words[j] ,"words[j].length",words[j].length)
+        //console.log(word, word.length)
+        for(i in word){
+            //console.log("i",i,"word.length",word.length)
+            //console.log("word.charCodeAt(i)",word.charCodeAt(i));
+            var morseCode = morse[word.charCodeAt(i)-97];
+            morseResult = morseResult.concat(morseCode);            
+        }
+        //console.log("morseResult",morseResult)
+        if(!resultArray.includes(morseResult)){
+            resultArray.push(morseResult);
+        }
+    }
+    //console.log("resultArray.length",resultArray.length)
+    return resultArray.length;
+};
