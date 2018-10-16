@@ -21,3 +21,26 @@ var uniqueMorseRepresentations = function(words) {
     //console.log("resultArray.length",resultArray.length)
     return resultArray.length;
 };
+
+
+/*
+//Better solution
+var uniqueMorseRepresentations = function(words) {
+    let morseCodeLookup = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
+    let translatedWords = [];
+    words.forEach(word => {
+        let wordSplit = word.split('');
+        let compiledWord = '';
+        wordSplit.forEach((character, idx) => {
+            compiledWord += morseCodeLookup[word.charCodeAt(idx) - 97];
+        })
+        translatedWords.push(compiledWord);
+    });
+    
+    let filteredWords = [];
+    translatedWords.forEach(word => {
+        if(!filteredWords.includes(word)) filteredWords.push(word);
+    })
+    return filteredWords.length;
+};
+*/
