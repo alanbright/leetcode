@@ -1,0 +1,17 @@
+var flipAndInvertImage = function(A) {
+    var result = []
+    A.forEach(row => {
+        let temp = []
+        row.reverse().forEach(element => {
+            temp.push((element+1)%2)
+        });
+        result.push(temp);
+    })
+    return result
+};
+
+/*
+var flipAndInvertImage = function(A) {
+    return A.map(a => [a] = a.reverse().map(x => x ^ 1));   
+};
+*/
