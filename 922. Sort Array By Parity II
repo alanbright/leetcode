@@ -1,0 +1,51 @@
+var sortArrayByParityII = function(A) {
+    var ResultArray = [];
+    var oddIndex = 1;
+    var evenIndex = 0;
+    A.forEach(num => {
+        if(num%2===0){
+            ResultArray[evenIndex]=num;
+            evenIndex += 2;
+        }else{
+            ResultArray[oddIndex]=num;
+            oddIndex += 2;
+        }
+    });
+    return ResultArray
+};
+//use let to replace var
+//use const to replace var properly, code will be faster
+/*
+var sortArrayByParityII = function(A) {
+    const ResultArray = [];
+    let oddIndex = 1;
+    let evenIndex = 0;
+    A.forEach(num => {
+        if(num%2===0){
+            ResultArray[evenIndex]=num;
+            evenIndex += 2;
+        }else{
+            ResultArray[oddIndex]=num;
+            oddIndex += 2;
+        }
+    });
+    return ResultArray
+};
+*/
+
+
+/*
+var sortArrayByParityII = function(A) {
+  let e = 0;
+  let o = 0;
+  const newA = [];
+  for(const x of A){
+    if(x%2==0){
+      newA[(e++)*2] = x;
+    }else{
+      newA[(o++)*2 + 1] = x;
+    }
+  }
+  return newA;
+};
+*/
