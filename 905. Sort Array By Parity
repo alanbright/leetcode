@@ -1,0 +1,12 @@
+var sortArrayByParity = function(A) {
+    var ResultArray=[];
+    var oddArray=[];
+    A.forEach(num => {
+        if(num%2===0){
+            ResultArray.push(num)
+        }else{
+            oddArray.push(num)
+        }
+    });
+    return ResultArray.concat(oddArray)
+};
