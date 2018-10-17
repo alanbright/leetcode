@@ -1,0 +1,21 @@
+var peakIndexInMountainArray = function(A) {
+    let max=0, result=0;
+    A.forEach((num, idx) => {    
+        //console.log("num, idx",num, idx)
+        if(num >= max){
+            max = num;
+            result = idx
+        }
+    })
+    //console.log(result)
+    return result
+};
+
+
+/*
+var peakIndexInMountainArray = function(A) {
+    let i=0;
+    do i++; while (A[i] <= A[i+1]);
+    return i;
+};
+*/
