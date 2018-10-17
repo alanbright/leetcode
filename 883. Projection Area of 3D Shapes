@@ -1,0 +1,47 @@
+//This solution is excellent. as faster as the other solution
+var projectionArea = function(grid) {
+    let xy=0, xz=0, yz=0;
+    let yzArray = [];
+    grid.map((a, xid) => {
+        let max=0
+        a.map((x, yid)=>{
+            if(x > 0) xy++;
+            if(x>=max){
+                max=x
+            }
+            if(xid == 0){
+                yzArray[yid]=x
+            }else{
+                 if(x > yzArray[yid]){
+                       yzArray[yid]=x
+                 }
+            }
+        })
+        xz += max
+    })
+    yzArray.map(num =>{yz += num})
+    return xy+xz+yz
+};
+
+
+/*
+var projectionArea = function(grid) {
+    let len = grid[0].length;
+    let max1 = 0;
+    let max2 = 0;
+    let zx = 0;
+    let zy = 0;
+    let xy = 0;
+    for(let i=0; i<len; i++) {
+        for(let j=0;j<len; j++) {
+            xy += grid[i][j] > 0 ? 1 : 0;
+            max1 = grid[i][j] > max1 ? grid[i][j] : max1;
+            max2 = grid[j][i] > max2 ?  grid[j][i] : max2;
+        }
+        zx += max1;
+        zy += max2;
+        max2 = max1 = 0;
+    }
+    return zx + zy + xy;
+};
+*/
