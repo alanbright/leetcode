@@ -1,0 +1,28 @@
+var transpose = function(A) {
+    let result=[];
+    A.map((a, xid)=>{
+        a.map((num, yid)=>{
+            if(xid==0){
+                result.push([]);
+            }
+            result[yid][xid]=num
+        })
+    });
+    return result
+};
+
+/*
+var transpose = function(A) {
+    var row = A.length;
+    var col = A[0].length;
+    var B = new Array(col);
+    for (var i = 0 ;i < col; i++) {
+        B[i] = new Array(row);
+        for(var j = 0; j < row; j++) {
+            B[i][j] = A[j][i];
+        }
+    }
+    return B;
+    
+};
+*/
