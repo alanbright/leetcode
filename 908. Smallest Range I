@@ -1,0 +1,33 @@
+//Excellent
+var smallestRangeI = function(A, K) {
+    if(A.length ==1) return 0;
+    let Amax=A[0], Amin=A[0];
+    A.map(num => {
+       if(num > Amax){Amax =num} 
+       if(num < Amin){Amin =num}
+    })
+       
+    let Aavg = (Amax-Amin)/2;
+        
+    if(Number.isInteger(Aavg)){
+        if(K >= Aavg){
+            return 0
+        }else{
+            return (Amax-Amin-2*K)
+        }
+    }else{
+        if(K > Aavg){
+            return 0
+        }else{
+            return (Amax-Amin-2*K)
+        }
+    }
+};
+
+/*
+var smallestRangeI = function(A, K) {
+    let max = Math.max(...A);
+    let min = Math.min(...A);
+    return Math.max(0, max - min - (2*K));
+};
+*/
