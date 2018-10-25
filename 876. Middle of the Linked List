@@ -1,0 +1,40 @@
+var middleNode = function(head) {
+    //console.log(head.val, head.next.val)
+    console.log("what")
+    let getLength = (list) => {
+        if(list == null) return 0;
+        return getLength(list.next)+1
+    }
+    console.log(getLength(head))
+    let halfLength = Math.floor(getLength(head)/2)
+    console.log(halfLength)
+    let gotMiddle = (list) => {
+        if(halfLength==0) return list;
+        halfLength --;
+        return gotMiddle(list.next)
+    }
+    
+    return gotMiddle(head)
+};
+
+
+/*
+// runner move 2 steps each time, head move 1 step each time. when runner finish, let head stop at the middle position
+
+var middleNode = function(head) {
+    
+    if(head.next == null) return head;
+    
+    runner = head;
+    
+    while(runner.next != null) {
+        if(runner.next.next != null) {
+            runner = runner.next.next;
+        } else {
+            runner = runner.next;
+        }
+        head = head.next;
+    }
+    return head;
+};
+*/
