@@ -1,0 +1,56 @@
+var searchBST = function(root, val) {
+    //console.log("root.val",root.val)
+    if(root.val == val) return root
+    if((root.left == null) && (root.right == null)) return []
+    if(root.left == null){
+        return searchBST(root.right, val)
+    }
+    if(root.right == null){
+        return searchBST(root.left, val)
+    }
+    let left = searchBST(root.left, val)
+    let right = searchBST(root.right, val)
+    //console.log("show left", left)
+    //console.log("show right", right,"right.length",right.length)
+    if(left && left.val){
+        //console.log("let's return left", left)
+      return left  
+    } 
+    if(right && right.val){
+        //console.log("let's return right", right)
+      return right  
+    } 
+    //console.log("let's return []")
+    return [];
+};
+
+
+/*
+//記得利用binary tree的效益，沒必要全樹搜尋
+var searchBST = function(root, val) {
+    if(root.val === val) {
+        return root;
+    }
+    if(val < root.val && root.left) {
+        return searchBST(root.left, val)
+    } else if(val > root.val && root.right) {
+        return searchBST(root.right, val)
+    }
+    
+    return [];
+};
+
+
+var searchBST = function(root, val) {
+        if (root.val === val) {
+            return root; 
+        } else if (val < root.val && root.left !== null){
+            return searchBST(root.left, val) 
+        } else if (val > root.val && root.right !== null) {
+            return searchBST(root.right, val); 
+        } else {
+            return [];
+        }
+};
+
+*/
