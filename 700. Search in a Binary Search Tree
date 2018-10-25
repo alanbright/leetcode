@@ -26,6 +26,12 @@ var searchBST = function(root, val) {
 
 
 /*
+[4, 2,7,1,3]
+5
+
+[18,2,22,null,null,null,63,null,84,null,null]
+63
+
 //記得利用binary tree的效益，沒必要全樹搜尋
 var searchBST = function(root, val) {
     if(root.val === val) {
