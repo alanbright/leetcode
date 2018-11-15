@@ -1,0 +1,31 @@
+var numberOfLines = function(widths, S) {
+    let lines = 1;
+    let tempcount = 0;
+    let cake = S.split('');
+    for(let piece of cake){
+        let width = widths[piece.charCodeAt(0)-97]
+        if((width + tempcount) > 100){
+            lines++;
+            tempcount = width;
+        }else{
+            tempcount += width;
+        }
+    }
+    return [lines, tempcount]
+};
+
+/*
+var numberOfLines = function(widths, S) {
+    let lines = 1;
+    let units = 0;
+    for(var i = 0; i < S.length; i++) {
+        let n = widths[S.charCodeAt(i) - 97]
+        if(units + n > 100) {
+            units = 0;
+            lines++;
+        }
+        units += n;
+    }
+    return [lines, units]
+};
+*/
