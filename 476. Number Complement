@@ -1,0 +1,23 @@
+var findComplement = function(num) {
+    return parseInt( (num).toString(2).replace(/1/g,'x').replace(/0/g,1).replace(/x/g,0) ,2)
+};
+
+integer to binary
+https://stackoverflow.com/questions/9939760/how-do-i-convert-an-integer-to-binary-in-javascript
+convert binary string to decimal
+https://stackoverflow.com/questions/10258828/how-to-convert-binary-string-to-decimal
+convert binary string to its complement
+https://stackoverflow.com/questions/45075552/convert-binary-string-to-its-complement
+
+/*
+var findComplement = function(num) {
+    let ans = 0;
+    let shift = 0;
+    while(num > 0) {
+        const bit = num & 1;
+        num = num >> 1;
+        ans = ans | (!bit << shift++);
+    }
+    return ans;
+};
+*/
