@@ -1,0 +1,24 @@
+var reverse = function(s){
+    let result = ""
+        for(let i=s.length-1; i>=0; i--){
+            result = result + s.charAt(i);
+        }
+    return result;
+}
+
+var reverseWords = function(s) {
+    let result = ""
+    let cake = s.split(" ");
+    for(piece of cake){
+        result = result +' '+ reverse(piece);
+    }
+    return result.slice(1)
+};
+
+
+
+/*
+var reverseWords = function(s) {
+   return s.split('').reverse().join('').split(' ').reverse().join(' ')
+};
+*/
