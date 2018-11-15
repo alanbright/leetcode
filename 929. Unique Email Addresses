@@ -1,0 +1,16 @@
+var numUniqueEmails = function(emails) {
+    let uniqueEmails = [];
+    for(let email of emails){
+        let check = email.split('@')
+        if(check.length > 2){
+            continue;
+        }
+        let localname = check[0].replace(/./g,'').replace(/\+.*/,'');
+        //console.log(check[0], localname)
+        let result = localname+'@'+check[1];
+        //console.log("result",result)
+        if(!uniqueEmails.includes(result))
+            uniqueEmails.push(result);
+    }
+    return uniqueEmails.length
+};
