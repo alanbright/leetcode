@@ -1,0 +1,13 @@
+var rotateString = function(A, B) {
+    var isRotate=0;
+  for(i=0;i<B.length-1;i++){
+      if(B.slice(i, B.length).concat(B.slice(0, i)) == A){
+          isRotate=1;
+      }
+  }  
+    if(isRotate){
+        return true;
+    }else{
+        return false;
+    }
+};
