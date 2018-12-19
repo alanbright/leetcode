@@ -1,0 +1,43 @@
+/**
+ * @param {string[]} A
+ * @return {number}
+ */
+var minDeletionSize = function(A) {
+    let eleLength=A[0].length;
+    //console.log('eleLength',eleLength);
+    let D = [];
+    for(let i=0;i<eleLength;i++){
+        let text=[];
+        for(let ele of A){
+            text.push(ele.charAt(i));
+        }
+        //console.log('text',text);
+        let s_text = JSON.parse(JSON.stringify(text)).sort();
+        //console.log('s_text',s_text);
+        //console.log('text',text);
+        if(text.join() === s_text.join()){
+            //console.log('good');
+        }else{
+            //console.log('need sort');
+            D.push(i);
+        }
+    }
+    //console.log(D);
+    return D.length;
+};
+
+
+///////// good solution
+var minDeletionSize = function(A) {
+  let count = 0;
+  for (let i = 0; i < A[0].length; i++) {
+    let m = 0;
+    for (let j = 0; j < A.length-1; j++) {
+      if (A[j].charCodeAt(i) > A[j+1].charCodeAt(i))
+        m++
+    }
+    if(m !== 0)
+      count++;
+  }
+  return count;
+};
