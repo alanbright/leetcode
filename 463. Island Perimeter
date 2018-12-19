@@ -1,0 +1,179 @@
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var islandPerimeter = function(grid) {
+    let Perimeter=0;
+    
+    //console.log('check grid.length',grid.length);
+    //console.log('check grid[0].length',grid[0].length);
+    
+    for(let i=0; i<grid.length; i++){
+        for(let j=0;j< grid[i].length; j++){
+            //console.log('(i, j)',i, j);
+            if(i==0 && j==0){
+                //special case 左上角
+                if(grid[i][j]==1){
+                    Perimeter += 2;
+                    if(grid.length == 1){
+                        Perimeter += 1;//only one row, now need to add 下
+                    }
+                    if(grid[0].length == 1){
+                        Perimeter += 1;//only one item, now need to add 右
+                    }                    
+                }
+                continue;
+            }
+            if(i==0 && j!=grid[i].length-1){
+                //上排，非最後一個
+                if(grid[i][j]==1){
+                    Perimeter += 1;//上面必加1
+                    if(grid.length == 1)
+                        Perimeter += 1;//only one row, now need to add 下
+                }
+                if(grid[i][j-1]==1 && grid[i][j]==0)
+                    Perimeter += 1;//左+1
+                if(grid[i][j-1]==0 && grid[i][j]==1)
+                    Perimeter += 1;//左+1
+                continue;
+            }
+            if(i==0 && j==grid[i].length-1){
+                //上排，最後一個
+                if(grid[i][j]==1){
+                    Perimeter += 2;//上面，右側必加1
+                    if(grid.length == 1)
+                        Perimeter += 1;//only one row, now need to add 下
+                }
+                if(grid[i][j-1]==1 && grid[i][j]==0)
+                    Perimeter += 1;//左+1
+                if(grid[i][j-1]==0 && grid[i][j]==1)
+                    Perimeter += 1;//左+1
+                continue;
+            }
+            if(i!=grid.length-1 && j==0){
+                //左邊第一column，中間項
+                if(grid[i][j]==1){
+                    Perimeter += 1;//左+1
+                    if(grid[0].length == 1){
+                        Perimeter += 1;//only one column, now need to add 右
+                    }                    
+                }
+                if(grid[i-1][j]==1 && grid[i][j]==0){
+                    Perimeter += 1;//上+1
+                }
+                //console.log('grid['+i+']['+j+']',grid[i][j]);
+                if(grid[i-1][j]==0 && grid[i][j]==1){
+                    Perimeter += 1;//上+1
+                }//*/
+                continue;
+            }
+            
+            if(i!=grid.length-1 && j!=grid[i].length-1){
+                //不靠邊中間項
+                //console.log('grid['+i+']['+j+']',grid[i][j]);
+                if(grid[i-1][j]==1 && grid[i][j]==0)
+                    Perimeter += 1;//左+1
+                if(grid[i-1][j]==0 && grid[i][j]==1)
+                    Perimeter += 1;//左+1
+                if(grid[i][j-1]==1 && grid[i][j]==0)
+                    Perimeter += 1;//上+1
+                if(grid[i][j-1]==0 && grid[i][j]==1)
+                    Perimeter += 1;//上+1
+                continue;
+            }
+            if(i!=grid.length-1 && j==grid[i].length-1){
+                //右邊最後column，中間項
+                if(grid[i][j]==1)
+                    Perimeter += 1;//右面必加1
+                if(grid[i-1][j]==1 && grid[i][j]==0)
+                    Perimeter += 1;//上+1
+                if(grid[i-1][j]==0 && grid[i][j]==1)
+                    Perimeter += 1;//上+1
+                if(grid[i][j-1]==1 && grid[i][j]==0)
+                    Perimeter += 1;//左+1
+                if(grid[i][j-1]==0 && grid[i][j]==1)
+                    Perimeter += 1;//左+1
+                continue;
+            }
+            if(i==grid.length-1 && j==0){
+                //左下角 special case
+                if(grid[i][j]==1){
+                    Perimeter += 2;//下面，左側必加1
+                    if(grid[0].length == 1){
+                        Perimeter += 1;//only one item, now need to add 右
+                    }
+                }
+                if(grid[i-1][j]==1 && grid[i][j]==0)
+                    Perimeter += 1;//上+1
+                if(grid[i-1][j]==0 && grid[i][j]==1)
+                    Perimeter += 1;//上+1
+                continue;
+            }
+            if(i==grid.length-1 && j!=grid[i].length-1){
+                //最下排，中間項
+                if(grid[i][j]==1)
+                    Perimeter += 1;//下面必加1
+                if(grid[i-1][j]==1 && grid[i][j]==0)
+                    Perimeter += 1;//上+1
+                if(grid[i-1][j]==0 && grid[i][j]==1)
+                    Perimeter += 1;//上+1
+                if(grid[i][j-1]==1 && grid[i][j]==0)
+                    Perimeter += 1;//左+1
+                if(grid[i][j-1]==0 && grid[i][j]==1)
+                    Perimeter += 1;//左+1                
+                continue;
+            }
+            if(i==grid.length-1 && j==grid[i].length-1){
+                if(grid[i][j]==1)
+                    Perimeter += 2;//下面，右側必加1
+                if(grid[i-1][j]==1 && grid[i][j]==0)
+                    Perimeter += 1;//上+1
+                if(grid[i-1][j]==0 && grid[i][j]==1)
+                    Perimeter += 1;//上+1
+                if(grid[i][j-1]==1 && grid[i][j]==0)
+                    Perimeter += 1;//左+1
+                if(grid[i][j-1]==0 && grid[i][j]==1)
+                    Perimeter += 1;//左+1
+                continue;
+            }
+        }
+    }
+    return Perimeter
+};
+
+//////////////////////
+
+var islandPerimeter = function(grid) {
+//current tile x
+var edges=0
+
+//loop through tiles
+for (y=0;y<grid.length;y++){
+  for (x=0;x<grid[0].length;x++){
+    if (grid[y][x]==1){
+      //console.log("Land");
+      if (y==0 || grid[y-1][x]==0){
+        edges++;
+      //console.log("Water Above");
+      }
+      if (y==grid.length-1 || grid[y+1][x]==0){
+        edges++;
+      //console.log("Water Below");
+      }
+      if (x==0 || grid[y][x-1]==0){
+        edges++;
+      //console.log("Water Left");
+      }
+      if (x==grid[0].length-1 || grid[y][x+1]==0){
+        edges++;
+      //console.log("Water Right");
+      }
+    }else{
+    //console.log("Water");
+    }
+
+  }
+}
+//console.log(edges);
+return (edges);
+};
