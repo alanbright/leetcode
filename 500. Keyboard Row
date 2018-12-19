@@ -1,0 +1,24 @@
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function(words) {
+    let [first, second, third] = ['QWERTYUIOPqwertyuiop','ASDFGHJKLasdfghjkl','ZXCVBNMzxcvbnm'];
+    let firstLine = first.split('');
+    let secondLine = second.split('');
+    let thirdLine = third.split('');
+    let result = [];
+    for(let word of words){
+        let wordSplit = word.split('');
+        let firstCheck= wordSplit.every(x =>{return firstLine.includes(x)});
+        let secondCheck= wordSplit.every(x =>{return secondLine.includes(x)});
+        let thirdCheck= wordSplit.every(x =>{return thirdLine.includes(x)});
+        //console.log(firstCheck , secondCheck , thirdCheck)
+        if(firstCheck || secondCheck || thirdCheck){
+            result.push(word);
+        }
+    }
+    return result;
+};
+
+// very good solution
