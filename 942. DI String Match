@@ -1,0 +1,49 @@
+/*
+問題可使用二元樹來思考。I, D 代表左或右
+展開二元樹可以理解對應的數字應填入的位置
+可依序根據ID去決定取值，當看到I，優先取最小值（shift)，看到Ｄ，優先取最大值（pop）
+最後一個就塞在array最後即可完成。
+*/
+var diStringMatch = function(S) {
+    let A=[];
+    for(let i=0;i<S.length+1;i++){
+        A.push(i);
+    }
+    console.log(A);
+    let Result = [];
+    for(let s of S){
+        if(s == 'I'){
+            Result.push(A.shift());
+        }else{
+            Result.push(A.pop());
+        }
+    }
+    Result.push(A.pop());
+    console.log(Result);
+    return Result;
+};
+
+/////////////////////////////
+
+var diStringMatch = function(S) {
+    let sArr = S.split('');
+    let result = [];
+    let index = 0;
+    let max=sArr.length;
+    let min=0;
+
+
+
+    while(index <= sArr.length){
+        if(sArr[index]==="I"){
+            result.push(min);
+            min++;
+        }else{
+            result.push(max);
+            max--;
+        }
+        index++;
+    }
+
+    return result;
+};
