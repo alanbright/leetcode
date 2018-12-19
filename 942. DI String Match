@@ -1,4 +1,24 @@
 /*
+參考別人的答案後，改良版。加入了利用min, max 類似移動指針的概念。可以加快不少速度。
+*/
+var diStringMatch = function(S) {
+    let [min, max] = [0, S.length+1];
+    
+    let Result = [];
+    for(let s of S){
+        if(s == 'I'){
+            Result.push(min++);
+        }else{
+            Result.push(--max);
+        }
+    }
+    //console.log(min, max)
+    Result.push(min);
+    //console.log(Result);
+    return Result;
+};
+
+/*
 問題可使用二元樹來思考。I, D 代表左或右
 展開二元樹可以理解對應的數字應填入的位置
 可依序根據ID去決定取值，當看到I，優先取最小值（shift)，看到Ｄ，優先取最大值（pop）
