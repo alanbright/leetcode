@@ -1,0 +1,36 @@
+
+var shortestToChar = function(S, C) {
+    let sA = S.split('');
+    let Result=[];
+    let rightIndex = 0;
+    let leftIndex = -1;
+    let C_is_existed = false;
+    for(let i=0; i< sA.length;i++){
+        if(sA[i]==C){
+            Result[i] = 0;
+            leftIndex=i;
+            continue;
+        }else{
+            //try to find next C
+            for(let k=leftIndex+1;k<S.length;k++){
+                if(sA[k] == C){
+                    C_is_existed = true;
+                    rightIndex = k;
+                    break;
+                }
+            }
+            if(leftIndex==-1){
+                Result[i] = rightIndex -i;
+                continue;
+            }
+            if(!C_is_existed){
+                Result[i] = i-leftIndex;
+                continue;
+            }
+            Result[i] = Math.min(i-leftIndex, Math.abs(rightIndex -i));
+        }
+    }
+    console.log(Result);
+    return Result;
+    
+};
