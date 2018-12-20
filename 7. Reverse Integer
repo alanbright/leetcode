@@ -1,0 +1,41 @@
+var reverse = function(x) {
+    let numString = String(x);
+    let negative=false;
+    //console.log(numString)
+    if(/^-.*$/.test(numString)){
+        negative=true;
+        numString = numString.slice(1);
+    }
+    let reverseString = numString.split('').reverse().join('');
+    if(/^0.*$/.test(numString)){
+        reverseString.replace(/^[0]+/,'');
+    }
+    if (Number(reverseString) > 0x7FFFFFFF) {
+        return 0;
+    }
+    if(negative){
+        reverseString = '-'+reverseString;
+    }
+    //console.log('reverseString',reverseString);
+    return reverseString
+    //*/
+};
+
+
+//////////
+
+function reverse(n) {
+    // Array#reverse method takes no argument.
+    // You can use `Math.abs()` instead of changing the sign if negative.
+    // Conversion of string to number can be done with unary plus operator.
+    var reverseN = +String(Math.abs(n)).split('').reverse().join('');
+    // Use a number constant instead of calculating the power
+    if (reverseN > 0x7FFFFFFF) {
+        return 0;
+    }
+    // As we did not change the sign, you can do without the boolean isNegative.
+    // Don't multiply with -1, just use the unary minus operator.
+    // The ternary operator might interest you as well (you could even use it
+    //    to combine the above return into one return statement)
+    return n < 0 ? -reverseN : reverseN;
+}
