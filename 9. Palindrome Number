@@ -1,0 +1,22 @@
+var isPalindrome = function(x) {
+    return String(x) === String(x).split('').reverse().join('')
+};
+
+
+///////////
+
+var isPalindrome = function(x) {
+    if(x< 0) return false
+    
+    return x ===  reverse(x)
+};
+
+function reverse(x) {
+    let r  = 0 
+    while(x){
+        r = r * 10 + x % 10
+        x = parseInt(x / 10)
+    }
+    
+    return r
+};
