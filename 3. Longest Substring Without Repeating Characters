@@ -1,0 +1,41 @@
+var lengthOfLongestSubstring = function(s) {
+    let sA = s.split('');
+    let Longest = '';
+    for(let i=0;i<sA.length;i++){
+        //start with each index and find the longest non-repeat string
+        //console.log('i',i);
+        let tempS = [];
+        for(j=0;j<(sA.length-i);j++){
+            //console.log('j',j);
+            if(tempS.includes(sA[i+j])){
+                break;//now tempS is the longest
+            }
+            tempS.push(sA[i+j]);
+        }
+        if(tempS.join('').length > Longest.length){
+            Longest = tempS.join('');
+        }
+    }
+    console.log('Longest',Longest)
+    return Longest.length;
+};
+
+
+/////// the fastest answer, but I do not understand
+
+var lengthOfLongestSubstring = function(s) {
+    var n = s.length, ans = 0;
+    // current index of character
+    var index = new Array(128);
+    for (var i = 0; i < index.length; i++) {
+        index[i] = 0;
+    }
+    // try to extend
+    i = 0;
+    for (var j = 0; j < n; j++) {
+        i = Math.max(index[s.charCodeAt(j)], i);
+        ans = Math.max(ans, j - i + 1);
+        index[ s.charCodeAt(j) ] = j + 1;
+    }
+    return ans;
+};
