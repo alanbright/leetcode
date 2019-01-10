@@ -1,0 +1,63 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var finalResult={};
+
+var mergeTwoLists = function(l1, l2, tempResult=finalResult) {
+    console.log("finalResult",finalResult)
+    
+    if(!l1 && !l2){
+        if(!finalResult.next) return null;
+        return finalResult;   
+    }
+    if(!l1){
+        tempResult.next = l2;
+        console.log("!l1 finalResult",finalResult);
+        var final = finalResult.next;
+        finalResult ={};
+        return final;
+    };
+    if(!l2){
+        tempResult.next = l1;
+        console.log("!l2 finalResult",finalResult);
+        var final = finalResult.next;
+        finalResult ={};
+        return final;
+    };
+    console.log("l1", l1.val, "l2", l2.val);
+    if(!l1.next){
+        if(l1.val < l2.val){
+            tempResult.next = {val:l1.val,next:null};
+            return mergeTwoLists(null, l2, tempResult.next);
+        }else{
+            tempResult.next = {val:l2.val,next:null};
+            return mergeTwoLists(l1, l2.next, tempResult.next);
+        }
+    }
+    if(!l2.next){
+        if(l1.val < l2.val){
+            tempResult.next = {val:l1.val,next:null};
+            return mergeTwoLists(l1.next, l2, tempResult.next);
+        }else{
+            tempResult.next = {val:l2.val,next:null};
+            return mergeTwoLists(l1, null, tempResult.next);
+        }
+    }
+    if(l1.val < l2.val){
+        tempResult.next = {val:l1.val,next:null};
+        return mergeTwoLists(l1.next, l2, tempResult.next);
+    }else{
+        tempResult.next = {val:l2.val,next:null};
+        return mergeTwoLists(l1, l2.next, tempResult.next);
+    }
+    
+};
