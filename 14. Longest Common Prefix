@@ -1,0 +1,28 @@
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function(strs) {
+    if(strs.length==0) return "";
+    let minLength = strs.reduce(function (p, v) {
+        //console.log(p, p.length, v, v.length)
+        return ( p.length < v.length ? p : v );
+    }).length
+    //console.log("minLength",minLength)
+    /*
+    for(str of strs){
+        console.log(str.slice(0,0));
+    }*/
+    var finalIndex=0;
+    for(var i=1;i<minLength+1 ; i++){
+        if(strs.every(str => str.slice(0,i) == strs[0].slice(0,i))){
+            console.log('all the same', strs[0].slice(0,i))
+            finalIndex++;
+        }else{            
+            console.log(strs[0].slice(0,i-1))
+            return strs[0].slice(0,i-1);
+        }
+    }
+    console.log("unexpected",finalIndex , strs[0].slice(0, finalIndex))
+    return strs[0].slice(0, finalIndex)
+};
