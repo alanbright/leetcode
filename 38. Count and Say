@@ -1,0 +1,55 @@
+/**
+ * @param {number} n
+ * @return {string}
+ */
+var countAndSay = function(n) {
+    if(n==1) return "1";
+    let result = "1";
+    for(i=1;i<n;i++){
+        let tempResult = "";
+        
+        for(j=0; j<result.length; j++){
+            if(result.slice(j, j+3) == "111"){
+                tempResult += "31";
+                j+=2;
+                continue;
+            }
+            if(result.slice(j, j+3) == "222"){
+                tempResult += "32";
+                j+=2;
+                continue;
+            }            
+            if(result.slice(j, j+2) == "11"){
+                tempResult += "21";
+                j++;
+                continue;
+            }
+            if(result.slice(j, j+2) == "22"){
+                tempResult += "22";
+                j++;
+                continue;
+            }
+            if(result.slice(j, j+2) == "33"){
+                tempResult += "23";
+                j++;
+                continue;
+            }
+            if(result.slice(j, j+1) == "3"){
+                tempResult += "13";
+                continue;
+            }            
+            if(result.slice(j, j+1) == "2"){
+                tempResult += "12";
+                continue;
+            }
+            if(result.slice(j, j+1) == "1"){
+                tempResult += "11";
+                continue;
+            }
+        }
+        //console.log("tempResult",tempResult)
+        result = tempResult;
+    }
+    
+    return result;
+};
