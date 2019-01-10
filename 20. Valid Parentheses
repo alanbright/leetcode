@@ -1,0 +1,32 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    let pushOperation = ["(","[","{"];
+    let popOperation = [")","]","}"];
+    
+    if(!s || s.length == 0) return true;
+    
+    let stack = [];
+    for(sl of s.split("")){
+        if(pushOperation.includes(sl)){
+            stack.push(sl);
+        }else if(popOperation.includes(sl)){
+            let got = stack.pop();
+            //console.log("got",got)
+            if(!got) return false;
+            if(got == '(' && sl != ')') return false
+            if(got == '{' && sl != '}') return false
+            if(got == '[' && sl != ']') return false
+        }else{
+            console.log("unexpected character");
+            return false;
+        }
+    }
+    if(stack.length==0){
+        return true
+    }else{
+        return false;
+    }
+};
