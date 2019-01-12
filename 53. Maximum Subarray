@@ -1,0 +1,91 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+    if(nums.length == 0) return null;
+    if(nums.length == 1) return nums[0];
+    
+    //stage 1, make +- part array
+    let divideArray = []
+    let flag="-";
+    
+    let tempNeg =0, tempPos =0;
+    for(let i=0; i< nums.length; i++){
+        //console.log("i",i,"nums.length",nums.length,"nums[i]",nums[i],"tempPos",tempPos);
+        if(i==0){ //first one
+            if(nums[i]>=0){
+                flag="+";
+                tempPos += nums[i];
+            }else{
+                tempNeg += nums[i];    
+            }
+            continue;
+        }
+        if(i == nums.length -1){ //last one
+            //console.log("i",i,"nums.length",nums.length,"last one nums[i]",nums[i]);
+            if(nums[i]>=0){
+                if(flag=="-"){
+                    divideArray.push(tempNeg);
+                    divideArray.push(nums[i]);
+                }else{
+                    divideArray.push(Number(tempPos+nums[i]));
+                }
+            }else{
+                if(flag=="+"){
+                    divideArray.push(tempPos);
+                    divideArray.push(nums[i]);
+                }else{
+                    divideArray.push(Number(tempNeg+nums[i]));
+                }
+            }
+            
+            continue;
+        }
+        if(nums[i]>=0){
+            if(flag=="-"){
+                divideArray.push(tempNeg);
+                tempNeg = 0;
+            }
+            flag="+";
+            tempPos += nums[i];
+        }else{
+            if(flag=="+"){
+                divideArray.push(tempPos);
+                tempPos = 0;
+            }
+            flag="-";
+            tempNeg += nums[i];
+        }
+    }
+    //console.log("divideArray",divideArray);
+    
+    let startIndex;
+    (divideArray[0] >=0 ) ? startIndex=0 : startIndex=1
+    //console.log("startIndex",startIndex);
+    
+    let max=0;
+    let tempSum=0;
+    for(i=startIndex; i<divideArray.length; i+=2){
+        //start from each positvie index
+        //console.log("i",i);
+        tempSum= divideArray[i]; // init
+        //console.log("init tempSum",tempSum)
+        if(tempSum > max) max = tempSum;
+        for(j=i; j<divideArray.length-2; j+=2){
+            //console.log("j", j);
+            tempSum += divideArray[j+1];
+            tempSum += divideArray[j+2];
+            //console.log("tempSum",tempSum)
+            if(tempSum > max) max = tempSum;
+        }
+    }
+    
+    flag="-", divideArray = [], tempNeg =0, tempPos =0;
+    if(max == 0){
+        //this array contains only negative number, return the minimum element
+        return Math.max.apply(null, nums)
+    }
+    
+    return max;
+};
