@@ -1,0 +1,39 @@
+var cut = function(previous, nowposition){
+    //console.log("start", previous, nowposition)
+    
+    if(previous && nowposition && previous.val != nowposition.val){
+        if(nowposition.next == null){
+            previous.next = nowposition
+            return // finish cut job
+        }else{
+            //console.log("nowposition.val",nowposition.val)
+            //console.log("nowposition.next.val",nowposition.next.val)
+            previous.next = nowposition
+            cut(nowposition, nowposition.next);//keep cut
+        }
+    }else{
+        // previous.val == nowposition.val
+        if(nowposition && nowposition.next == null){
+            previous.next = null;
+        }else{
+            if(nowposition){
+                cut(previous, nowposition.next);//keep cut
+            }else{
+                console.log("unexpected", nowposition)
+                return
+            }            
+        }
+    }
+}
+
+var deleteDuplicates = function(head) {
+    
+    if(head ==null || head.next == null) return head;
+    //console.log("head",head)
+    //console.log("head.val",head.val)
+    //console.log("head.next",head.next)
+    cut(head, head.next);
+    return head
+    
+    
+};
