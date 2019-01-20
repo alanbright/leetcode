@@ -1,0 +1,23 @@
+var mySqrt = function(x) {
+    if(x==0) return 0;
+    [left, right] = [0, x];
+    //console.log(left, right)
+    while(left <= right){
+        let mid = Math.floor((right + left)/2)
+        //console.log("mid",mid);
+        if (mid*mid <= x && x < (mid+1)*(mid+1)){
+            //console.log("mid*mid",mid*mid,"(mid+1)*(mid+1)",(mid+1)*(mid+1));
+            return mid
+        }else if(x < mid*mid){
+            right = mid;
+        }else{
+            left = mid+1; // https://leetcode.com/problems/sqrtx/discuss/25047/A-Binary-Search-Solution
+        }
+    }
+};
+
+/*
+still dont know why need to do left = mid+1
+
+
+*/
