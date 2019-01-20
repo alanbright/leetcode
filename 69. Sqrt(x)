@@ -17,7 +17,13 @@ var mySqrt = function(x) {
 };
 
 /*
-still dont know why need to do left = mid+1
+still dont know why need to do left = mid+1 ??
+because mid*mid <= x (there is an equal)
+and mid*mid > x case, the left value is not possible to be answer. (only could be smaller than answer
+so we can add 1 to speed up. if we don't do this, submit will be timeout
+
+https://leetcode.com/problems/sqrtx/discuss/25057/3-4-short-lines-Integer-Newton-Every-Language
+https://leetcode.com/problems/sqrtx/discuss/25255/Newton's-Iterative-Method-in-C%2B%2B
 
 
 */
