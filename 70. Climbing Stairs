@@ -1,0 +1,27 @@
+var combination = function(n, k){
+    if(n==0) return 1;
+    let up=1;
+    let down=1;
+    for(let i=n-k+1;i<=n;i++){
+        up = up * i;
+    }
+    for(let i=1;i<=k;i++){
+        down = down * i;
+    }
+    return up/down
+}
+
+var climbStairs = function(n) {
+    let summary =0;
+    let k = Math.floor(n/2);
+    //console.log("k",k)
+    for(let i=0; i <= k; i++){
+        summary += combination(n - 2*i + i , i);
+    }
+    return summary
+};
+
+/*
+https://leetcode.com/problems/climbing-stairs/discuss/25299/Basically-it's-a-fibonacci.
+https://leetcode.com/problems/climbing-stairs/discuss/25296/3-4-short-lines-in-every-language
+*/
