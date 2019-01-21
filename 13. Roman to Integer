@@ -1,0 +1,22 @@
+const roman = {
+    "I":1,
+    "V":5,
+    "X":10,
+    "L":50,
+    "C":100,
+    "D":500,
+    "M":1000
+}
+
+var romanToInt = function(s) {
+    let result = 0;
+    for(let i=0;i<s.length;i++){
+        //console.log(i, s.charAt(i), s[i])
+        result += (roman[s[i]] < roman[s[i+1]]) ? -roman[s[i]] : roman[s[i]];
+    }
+    return result
+};
+
+/*
+https://leetcode.com/problems/roman-to-integer/discuss/207293/Easy-to-understand-Faster-than-98.54-of-JavaScript
+*/
