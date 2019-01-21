@@ -1,0 +1,11 @@
+var isSameTree = function(p, q) {
+    if((p && !q) || (!p && q)) return false;
+    if(!p && !q) return true
+    if(p.val != q.val) return false;
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+};
+
+
+/*
+https://leetcode.com/problems/same-tree/discuss/135726/javascript-solution%3A-beats-98.62-runtime-52ms.-Provide-3-solutions
+*/
