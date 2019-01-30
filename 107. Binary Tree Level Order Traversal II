@@ -1,0 +1,72 @@
+
+var levelOrderBottom = function(root) {
+    let helper = function(p, q, depth){
+        if(p == null && q == null){
+           return;
+        }
+        if(p !==null && p.val !==null){
+            if(result[depth] == null) result[depth]= [];
+            result[depth].push(p.val);
+            let tempDepth = depth+1;
+            helper(p.left, p.right, tempDepth);
+        }
+        if(q !==null && q.val !==null){
+            if(result[depth] == null) result[depth]= [];
+            result[depth].push(q.val);
+            let tempDepth = depth+1;
+            helper(q.left, q.right, tempDepth);
+        }
+        return
+    }    
+    
+    let result = []
+    if(root == null) return result;
+    result[0]= [root.val];
+    helper(root.left, root.right, 1);
+    return result.reverse();
+};
+
+/*
+var levelOrderBottom = function(root) {
+    var re = [];
+    
+    function tra(tree, lv) {
+        if (tree !== null) {
+            if (re[lv] === undefined) {
+                re.push([]);
+            }
+            re[lv].push(tree.val);
+            
+            tra(tree.left, lv+1);
+            tra(tree.right, lv+1);
+        }
+    }
+    
+    tra(root,0);
+    
+    return re.reverse();
+};
+
+
+var levelOrderBottom = function(root) {
+    if (!root) return [];
+    
+    const queue = [root];
+    const result = [];
+    
+    while (queue.length > 0) {
+        const l = queue.length;
+        const level = [];
+        
+        for (let i = 0; i < l; i++) {
+            const node = queue.shift();
+            level.push(node.val);
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+        result.unshift(level);
+    }
+    
+    return result;
+};
+*/
