@@ -18,24 +18,11 @@ var hasPathSum = function(root, sum) {
 
 /*
 var hasPathSum = function(root, sum) {
-    let result = false;
-    
-    const add = (node, total = 0) => {
-        if(!node) return false;
-        
-        let current = total + node.val;
-        
-        add(node.left, current);
-        add(node.right, current);
-        
-        // if we reached the top of the tree...
-        if(!node.left && !node.right && current === sum) {
-            result = true;
-        };
+    if(!root) return false;
+    sum = sum - root.val;
+    if(!root.left && !root.right) {
+        return sum === 0;
     }
-    
-    add(root);
-    
-    return result;
+    return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
 };
 */
