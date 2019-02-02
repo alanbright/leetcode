@@ -1,0 +1,37 @@
+var depth = function(root){
+    //console.log("check", root)
+    var depth_all = [];
+    let getDepth = function(root, n){    
+        if(root == null){
+            return
+            //return depth_all.push(n);
+        }
+        n++;
+        if(root.left == null && root.right ==null){
+            return depth_all.push(n);
+        }
+        getDepth(root.left, n);
+        getDepth(root.right, n);
+    }
+    getDepth(root, 0);
+    console.log(depth_all)
+    //console.log("return depth",Math.max( ...depth_all ))
+    return Math.min( ...depth_all )
+}
+
+var minDepth = function(root) {
+    if(root == null ) return 0;
+    let result = depth(root);
+    console.log(result)
+    return result
+};
+
+/*
+var minDepth = function(root) {
+    if (!root) return 0
+    var L = minDepth(root.left)
+    var R = minDepth(root.right)
+    return 1 + (Math.min(L, R) || Math.max(L, R))
+};
+
+*/
