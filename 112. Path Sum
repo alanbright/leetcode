@@ -1,0 +1,41 @@
+var hasPathSum = function(root, sum) {
+    if(root == null){
+        console.log('root = null sum',sum)    
+        return false
+    }
+    if(root.left == null && root.right == null){
+        console.log('leaf sum',sum);
+        if(sum - root.val == 0){
+            return true
+        }else{
+            return false  
+        }
+    }
+    sum -= root.val
+    return hasPathSum(root.left, sum) || hasPathSum(root.right, sum)
+};
+
+
+/*
+var hasPathSum = function(root, sum) {
+    let result = false;
+    
+    const add = (node, total = 0) => {
+        if(!node) return false;
+        
+        let current = total + node.val;
+        
+        add(node.left, current);
+        add(node.right, current);
+        
+        // if we reached the top of the tree...
+        if(!node.left && !node.right && current === sum) {
+            result = true;
+        };
+    }
+    
+    add(root);
+    
+    return result;
+};
+*/
