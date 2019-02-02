@@ -1,0 +1,24 @@
+var sortedArrayToBST = function(nums) {
+    /*
+    if(!nums.length) return null;   
+    var mid = Math.floor((nums.length)/2);
+    var root = new TreeNode(nums[mid]);
+    root.left = sortedArrayToBST(nums.slice(0, mid));
+    root.right = sortedArrayToBST(nums.slice(mid+1));
+    return root;
+    //*/
+    
+    if(!nums.length) return null;
+    let mid = Math.floor(nums.length/2);
+    var root = new TreeNode(nums[mid]);
+    root.left = sortedArrayToBST(nums.slice(0,mid));
+    root.right = sortedArrayToBST(nums.slice(mid+1));
+    return root;
+    //*/
+};
+
+/*
+這題真的不懂，還得加強javascript功力
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/discuss/146204/Javascript-Accepted-Solution
+
+*/
