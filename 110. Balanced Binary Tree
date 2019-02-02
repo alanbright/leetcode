@@ -1,0 +1,54 @@
+var depth = function(root){
+    //console.log("check", root)
+    var depth_all = [];
+    let getDepth = function(root, n){    
+        if(root == null){
+            return depth_all.push(n);
+        }
+        n++;
+        if(root.left == null && root.right ==null){
+            return depth_all.push(n);
+        }
+        getDepth(root.left, n);
+        getDepth(root.right, n);
+    }
+    getDepth(root, 0);
+    //console.log(depth_all)
+    //console.log("return depth",Math.max( ...depth_all ))
+    return Math.max( ...depth_all )
+}
+
+var isBalanced = function(root) {
+
+    if(root == null) return true;
+    if(root.left == null && root.right == null) return true;
+    
+    return (Math.abs(depth(root.left) - depth(root.right)) < 2) && isBalanced(root.left) && isBalanced(root.right)
+};
+
+
+/*
+function getHeight(root) {
+    if (!root) return -1;
+    return 1 + Math.max(getHeight(root.left), getHeight(root.right));
+}
+
+var isBalanced = function(root) {
+    let flag = true;
+    const tree = (node) => {
+        if(!flag) return;
+        if(node){
+            let left = tree(node.left);
+            let right = tree(node.right);
+            if(Math.abs(left - right) > 1){
+                flag = false;
+                return;
+            }
+            return Math.max(left, right) + 1;
+        }
+        return 0;
+    }
+    tree(root);
+    return flag;
+};
+*/
