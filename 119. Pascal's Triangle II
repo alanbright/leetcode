@@ -1,0 +1,35 @@
+var getRow = function(rowIndex) {
+    if(rowIndex == 0) return [1];
+    if(rowIndex == 1) return [1,1];
+    if(rowIndex == 2) return [1,2,1];
+    
+    let result = [1,2,1];
+    for(i=3; i <= rowIndex; i++){
+        //produce ith rows
+        //console.log("result",result);
+        //console.log("i",i,"result[i-2]",result[i-2]);
+        let tempArray = [1]
+        for(j=1;j < result.length; j++ ){
+            tempArray.push(result[j-1] + result[j]) 
+        }
+        tempArray.push(1);
+        result = tempArray;
+    }
+    return result
+};
+
+/*
+Runtime: 68 ms, faster than 100.00% of JavaScript online submissions for Pascal's Triangle II.
+
+
+var getRow = function(rowIndex) {
+    let result = new Array(rowIndex + 1).fill(1)
+    
+    for(let i = 1; i < rowIndex; ++i)
+        for(let j = i; j > 0; --j)
+            result[j] += result[j - 1]
+    
+    return result
+}
+
+*/
