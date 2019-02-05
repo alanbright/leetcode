@@ -1,0 +1,19 @@
+var singleNumber = function(nums) {
+
+    let length = nums.length; //be careful, nums.length is dynamic
+    for(let i=0; i< length; i++){
+        let nowValue = nums.shift();
+        let check = nums.indexOf(nowValue);
+        if(check == -1) return nowValue;
+        nums.splice(check,1);
+    }
+    return nums[0]
+};
+
+
+/*
+var singleNumber = function(nums) {
+    return nums.reduce((x, y) => x ^ y, 0);
+};
+
+*/
