@@ -27,4 +27,19 @@ var isPalindrome = function(s) {
     }
     return true;
 };
+
+//less memory
+var isPalindrome = function(s) {
+    s = s.replace(/[^a-z0-9]/gi,'').toLowerCase()
+  if (!s.length) return true
+  
+  let i = 0
+  let j = s.length - 1
+  
+  while (i < j) 
+    if (s[j--] !== s[i++]) return false
+  
+  return true
+};
+
 */
