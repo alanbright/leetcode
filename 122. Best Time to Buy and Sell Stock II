@@ -1,0 +1,26 @@
+var maxProfit = function(prices) {
+    //find each ascending order and get the profit.
+    if(prices.length < 2) return 0;
+    let profit = 0;
+    for(let i=1; i<prices.length;i++){
+        profit += Math.max(0, prices[i] - prices[i-1]);
+    }
+    return profit
+};
+
+/*
+Runtime: 76 ms, faster than 99.47% of JavaScript online submissions for Best Time to Buy and Sell Stock II.
+Memory Usage: 16 MB, less than 29.41% of JavaScript online submissions for Best Time to Buy and Sell Stock II.
+
+var maxProfit = function(prices) {
+    let profit = 0;
+    for (let i = 0; i < prices.length -1; i++) {
+        if (prices[i + 1] > prices[i]) {
+            profit += prices[i + 1] - prices[i];
+        }
+    }
+    
+    return profit;
+};
+
+*/
