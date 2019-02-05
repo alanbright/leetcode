@@ -1,0 +1,30 @@
+var isPalindrome = function(s) {
+    if(s.length < 2) return true;
+    // get undercase, and remove any alphabet is not A-z
+    let regex = new RegExp("[^0-9a-z]","g")
+    s = s.toLowerCase().replace(regex,'').trim()
+    /*
+    console.log(s);
+    console.log(s.split(''))
+    console.log(s.split('').reverse())
+    console.log(s.split('').reverse().join(''))
+    //*/
+    return s.split('').reverse().join('') === s
+};
+
+
+/*
+var isPalindrome = function(s) {
+    let n = s.replace(/\W/g,'').toLowerCase();
+    let end = n.length - 1
+    let start = 0
+    while(end>start){
+        if (n[end]!=n[start]){
+            return false
+        }
+        end--
+        start++
+    }
+    return true;
+};
+*/
