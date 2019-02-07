@@ -1,0 +1,66 @@
+const mapping = ['0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+var convertToTitle = function(n) {
+    // nk*26^k+....+n2*26^2+n1^26
+    //get the max expotential bit
+    
+    testExpo=0;
+    sum=0;
+    while(1){
+        sum += Math.pow(26,testExpo)
+        if((sum + Math.pow(26,testExpo+1)) > n && n >= sum){
+            break;
+        }
+        testExpo++;
+    }
+    //console.log("final testExpo",testExpo);
+    let k = testExpo;
+    let digits = [];
+    while(k >= 0){
+        let digit = Math.floor( n/ Math.pow(26, k));
+        //console.log("digit",digit)
+        if(k!=0 && n%Math.pow(26, k) == 0){ //52
+            digit --;
+        }
+        digits.push(mapping[digit]);
+        n -= digit * Math.pow(26, k)
+        k--;
+    }
+    return digits.join('')
+    //*/
+};
+
+
+/*
+var convertToTitle = n => {
+  const converted = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+  ];
+
+  if (n < 27) return converted[n - 1];
+  return convertToTitle(Math.trunc((n - 1) / 26)) + converted[((n - 1) % 26)];
+};
+
+const aCharCode = 'A'.charCodeAt(0);
+
+var convertToTitle = function(n) {
+    let colTitle = '';
+    
+    while (n > 0) {
+        const c = n % 26 === 0 ? 26 : n % 26;
+        colTitle = `${numToChar(c)}${colTitle}`;
+        n = (n - c)/26;
+    }
+    
+    return colTitle;
+};
+
+var numToChar = n => {
+    return String.fromCharCode(aCharCode + n - 1);
+}
+
+return n == 0 ? "" : convertToTitle((n - 1) / 26) + (char) ((n - 1) % 26 + 'A');
+
+
+*/
