@@ -1,0 +1,32 @@
+    let sumObj = {}
+    for(x of nums){
+        if(sumObj[x] == null) sumObj[x]=0;
+        sumObj[x] += 1;
+        if(sumObj[x] > nums.length/2)
+            return x
+    }
+    
+    /*
+    var majorityElement = function(nums) {
+    let n = nums.length/2;
+    let obj = {};
+    nums.forEach(num => {
+        obj[num]===undefined ? obj[num]=1:obj[num]+=1
+        
+    })
+    for(let key in obj){
+        if(obj[key]>n){
+            return key
+        }
+    }
+};
+
+
+var majorityElement = function(nums) {
+    // sort the array and the middle is the majority
+    nums.sort((a,b) => a - b);
+    return nums[Math.floor(nums.length/2)];
+}; 
+
+    
+    */
