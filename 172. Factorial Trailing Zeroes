@@ -1,0 +1,32 @@
+/*
+//Time Limit Exceeded
+
+var trailingZeroes = function(n) {
+    let factortial = 1;
+    let zeros = 0;
+    let temp = 1;
+    
+    while(temp <= n){
+        factortial *= temp ;
+        //console.log("temp",temp)
+        //console.log("factortial",factortial);
+        //console.log(String(factortial)[String(factortial).length-1])
+        while((String(factortial)[String(factortial).length-1]) == 0){
+            
+            factortial /= 10;
+            //console.log("factortial ok",factortial);
+
+            zeros++;
+        }
+        temp++;
+        factortial = factortial % 100000;
+    }
+    //*/
+    return zeros;
+};
+
+
+https://leetcode.com/problems/factorial-trailing-zeroes/discuss/52371/My-one-line-solutions-in-3-languages
+
+https://leetcode.com/problems/factorial-trailing-zeroes/discuss/52367/My-explanation-of-the-Log(n)-solution
+*/
