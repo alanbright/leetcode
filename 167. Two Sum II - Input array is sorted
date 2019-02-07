@@ -1,0 +1,36 @@
+    let substract = numbers.map(x => { return target - x });
+    //console.log(substract);
+    for(let i=0; i< substract.length; i++){
+            //console.log("i",i)
+            //console.log(numbers.indexOf(substract[i]))        
+        if(numbers.indexOf(substract[i]) >= 0){
+            //console.log("i+1",i+1)
+            //console.log(numbers.indexOf(substract[i])+1)
+            if((i+1) == numbers.indexOf(substract[i])+1){ // [0,0,3,4], 0
+                return [i+1, numbers.indexOf(substract[i])+2];    
+            }
+            return [i+1, numbers.indexOf(substract[i])+1];
+        }
+    }
+    
+    
+    /*
+    
+    var twoSum = function(numbers, target) {
+    let index1 = 0;
+    let index2 = numbers.length - 1;
+    
+    while (index1 < index2) {
+        let sum = numbers[index1] + numbers[index2];
+        if (sum < target) {
+            index1++;
+        } else if (sum > target) {
+            index2--;
+        } else {
+            return [index1 + 1, index2 + 1];
+        }
+    }
+    
+    return [];
+};
+    */
