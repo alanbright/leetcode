@@ -1,6 +1,6 @@
 var isUgly = function(num) {
-    //remove 2 factor
-    while(num %2 ==0){
+    if (num == 0) return false; //avoid endless loop
+    while(num %2 ==0){    //remove 2 factor
         num /= 2;
     }
     while(num %3 ==0){
@@ -14,7 +14,6 @@ var isUgly = function(num) {
 };
 
 /*
-Time Limit Exceeded
 
 https://leetcode.com/problems/ugly-number/discuss/69214/2-4-lines-every-language
 
