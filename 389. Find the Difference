@@ -1,0 +1,26 @@
+var findTheDifference = function(s, t) {
+    let sA = s.split('');
+    for(let i=0; i<t.length;i++){
+        if(sA.indexOf(t[i]) == -1){
+            return t[i]  
+        }else{
+            sA.splice(sA.indexOf(t[i]),1)
+        }
+    }
+};
+
+/*
+function findTheDifference(s, t) {
+    var sTotal = 0;
+    var tTotal = 0;
+    for (var i = 0; i < s.length; i++) {
+        sTotal += s.charCodeAt(i);
+    }
+    for (var i = 0; i < t.length; i++) {
+        tTotal += t.charCodeAt(i);
+    }
+    return String.fromCharCode(tTotal - sTotal);
+}
+
+
+*/
