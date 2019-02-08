@@ -1,0 +1,42 @@
+var intersect = function(nums1, nums2) {
+    let result = [];
+    if(nums1.length >= nums2.length){
+        for(item of nums2){
+            if(nums1.indexOf(item)!= -1){
+                nums1.splice(nums1.indexOf(item),1);
+                result.push(item);
+            }
+        }
+    }else{
+        for(item of nums1){
+            if(nums2.indexOf(item)!= -1){
+                nums2.splice(nums2.indexOf(item),1);
+                result.push(item);
+            }
+        }        
+    }
+    return result;
+};
+
+/*
+https://leetcode.com/problems/intersection-of-two-arrays-ii/discuss/211053/JavaScript-56-ms-faster-than-95.72.
+
+var intersect = function(nums1, nums2) {
+    var map={};
+    
+    if(nums2.length<nums1.length){
+        [nums1, nums2]=[nums2, nums1];
+    }
+    
+    for(var num of nums1){
+        map[num]=(map[num]||0)+1;
+    }
+    
+    return nums2.filter(num=>{
+        if(map[num]>0){
+            map[num]--;
+            return true;
+        }
+    });
+};
+*/
