@@ -1,0 +1,12 @@
+var isPowerOfThree = function(n) {
+    if (n == 0) return false;
+    while(n % 3 ==0){
+        n /= 3;
+    }
+    return n == 1;
+};
+
+/*
+https://leetcode.com/problems/power-of-three/discuss/202697/Simple-javascript-solution
+https://leetcode.com/problems/power-of-three/discuss/77977/Math-1-liner-no-log-with-explanation
+*/
