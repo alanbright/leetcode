@@ -1,0 +1,35 @@
+var firstUniqChar = function(s) {
+    let check = {}
+    for(let i=0; i < s.length; i++){
+        if(check[s[i]] == null){
+            check[s[i]] = 1;
+        }else{
+            check[s[i]]++;
+        }
+    }
+    for(let i=0; i < s.length; i++){
+        if(check[s[i]] == 1){
+            return i
+        }
+    }
+    return -1;
+};
+
+/*
+https://leetcode.com/problems/first-unique-character-in-a-string/discuss/86356/JavaScript-solution
+
+
+var firstUniqChar = function(s) {
+    let map = Array(26).fill(0)
+    let index = null;
+    for (let i = 0 ; i < s.length ; ++i) {
+        map[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+    }
+    for (let i = 0 ; i < s.length ; ++i) {
+        if (map[s.charCodeAt(i) - 'a'.charCodeAt(0)] === 1) {
+        return i
+        }
+    }
+    return -1
+};
+*/
