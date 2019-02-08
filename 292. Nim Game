@@ -1,0 +1,7 @@
+var canWinNim = function(n) {
+    return n%4 != 0
+};
+
+/*
+https://leetcode.com/problems/nim-game/discuss/73841/Math-Proof-for%3A-4k-is-a-Sufficient-and-Necessary-Condition-for-Not-Win
+*/
