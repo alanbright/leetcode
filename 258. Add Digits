@@ -1,0 +1,40 @@
+var addDigits = function(num) {
+    //console.log(String(num).length)
+    while(String(num).length > 1){
+        let temp = 0;
+        //console.log('num',num)
+        for(digit of String(num)){
+            temp += Number(digit);
+        }
+        num = temp;
+    }
+    return num;
+};
+
+/*
+// instead of using number.toString(), use num+''
+// since when num goes very big, for example 1000000000000000001, 
+// number.toString() returns 1e+21, which will break the logic
+
+// test with 0
+// test with 10
+// test with 11
+// test with 99
+// test with 111
+// test with 1012931231245123
+// test with 100000000000000000001
+// test with NaN
+
+// 0(1) solution -- return (num % 9 === 0 ? (num === 0 ? 0 : 9) : num % 9)
+var addDigits = function(num) {
+    // the typeof NaN === 'number', check input
+    if (Number.isNaN(num)) {
+        return 0
+    }
+    // es6 way, convert string to array
+	let sum = String(num).split('').reduce((a, b) => +a + +b);
+	return sum >= 10 ? addDigits(sum) : sum;
+};
+
+https://leetcode.com/problems/add-digits/discuss/68580/Accepted-C%2B%2B-O(1)-time-O(1)-space-1-Line-Solution-with-Detail-Explanations
+*/
