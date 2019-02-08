@@ -1,0 +1,31 @@
+var isPowerOfTwo = function(n) {
+    while(n>1){
+        n /= 2;
+        if(!Number.isInteger(n)) return false;
+    }
+    if(n == 1){
+        return true;
+    }else{
+        return false;
+    }
+    
+};
+
+/*
+var isPowerOfTwo = function(n) {
+    if (n <= 0) return false;
+    if (n === 1) return true; // 2 的 0 次方 = 1
+    
+    while (n > 3) {
+        if (n % 2 !== 0) return false;
+        n = parseInt(n / 2, 10);
+    }
+    
+    return n % 2 === 0;
+};
+
+good trick
+https://leetcode.com/problems/power-of-two/discuss/63974/Using-nand(n-1)-trick
+https://leetcode.com/problems/power-of-two/discuss/63966/4-different-ways-to-solve-Iterative-Recursive-Bit-operation-Math
+
+*/
