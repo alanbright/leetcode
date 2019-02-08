@@ -1,0 +1,13 @@
+var missingNumber = function(nums) {
+    let sortNums = nums.sort(function(a, b){return a-b});
+    //console.log(sortNums)
+    for(let i=0; i<nums.length+1; i++){
+        if(sortNums[i] != i) return i
+    }
+};
+
+/*
+https://leetcode.com/problems/missing-number/discuss/69791/4-Line-Simple-Java-Bit-Manipulate-Solution-with-Explaination
+https://leetcode.com/problems/missing-number/discuss/69795/Java-solution-O(1)-space-and-O(n)-in-time
+
+*/
