@@ -1,0 +1,34 @@
+var canConstruct = function(ransomNote, magazine) {
+    let rA = ransomNote.split('');
+    let mA = magazine.split('');
+    let result = [];
+    for(item of rA){
+        if(mA.indexOf(item) != -1){
+            mA.splice(mA.indexOf(item),1);
+            result.push(item);
+        }
+    }
+    return rA.join('') === result.join('')
+};
+
+/*
+var canConstruct = function(ransomNote, magazine) {
+    if(magazine.length < ransomNote){
+        return false;    
+    }
+    
+    for(let letter of ransomNote){
+        let tempMagasin = magazine.replace(letter, ''); //遇到的第一个letter在magazine中，替换成空，相当于消掉这个字符从magazine中
+        if(tempMagasin===magazine){ // 如果此时相等了说明杂志中的字符不够用，返回false
+            return false
+        }
+        
+        magazine = tempMagasin; //将消掉上一个字符的临时数组赋值给magazine进行下一次遍历，因为letter是从ransomNode中来的，若果遍历完了则说明杂志的字符够用
+        // console.log(tempMagasin, magazine);
+    }
+    
+    return true
+};
+
+
+*/
