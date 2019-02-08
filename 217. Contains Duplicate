@@ -1,0 +1,32 @@
+var containsDuplicate = function(nums) {
+    let numObj = {};
+    for(let num of nums){
+        if(numObj[num] == null){
+            numObj[num] = {}
+        }else{
+            return true;
+        }
+    }
+    return false;
+};
+
+/*
+var containsDuplicate = function(nums) {
+    let set = new Set(nums);
+    return set.size !== nums.length
+};
+
+var containsDuplicate = function(nums) {
+    var i = 0;
+    while (i<nums.length){
+        if(nums.includes(nums[i]) && nums.indexOf(nums[i]) != i)
+            return true;
+        else 
+            i++;
+    }
+    return false;
+};
+
+https://leetcode.com/problems/contains-duplicate/discuss/61054/Javascript-very-fast-solution
+https://leetcode.com/problems/contains-duplicate/discuss/174189/JavaScript-1-line
+*/
