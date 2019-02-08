@@ -1,0 +1,8 @@
+var isAnagram = function(s, t) {
+    return s.split('').sort().join('') === t.split('').sort().join('')
+};
+
+
+/*
+https://leetcode.com/problems/valid-anagram/discuss/66810/JavaScript-solution
+*/
