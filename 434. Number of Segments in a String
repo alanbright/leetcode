@@ -1,0 +1,26 @@
+var countSegments = function(s) {
+    if(s.length ==0) return 0;
+    let sA = s.split('');
+    let result = 0;
+    for(let i=0; i<sA.length-1; i++){
+        if(sA[i]==' ' && sA[i+1]!=' '){
+            result++
+        }
+    }
+    if(sA[0]!=' '){
+        //console.log("start")
+        result++  
+    } 
+    //console.log(result);
+    return result
+};
+
+/*
+var countSegments = function(s) {
+    s = s.replace(/\s+/g,' ').trim();
+    if(s=='')return 0
+    var arr=s.split(' ');
+   return(arr.length);
+};
+
+*/
