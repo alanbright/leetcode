@@ -1,0 +1,12 @@
+var sortedSquares = function(A) {
+    let squareA = []
+    A.forEach(x=>{ squareA.push(Math.pow(x, 2));})
+    //console.log(squareA)
+    return squareA.sort(function(a, b){return a -b })
+};
+
+/*
+
+
+
+*/
