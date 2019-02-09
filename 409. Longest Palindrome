@@ -1,0 +1,42 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestPalindrome = function(s) {
+    if(s == null) return 0;
+    if(s.length == 1) return 1;
+    let sA = s.split('');
+    let sO = {};
+    for(item of sA){
+        if(sO[item] == null){
+            sO[item] = 1
+        }else{
+            sO[item]++
+        }
+    }
+    let result=1;
+    console.log(sO);
+    for(item of new Set(sA)){
+        if(sO[item] >= 2){
+            if(sO[item] %2 ==0){
+                console.log(item, sO[item])
+                result += sO[item];
+            }else{
+                console.log(item, sO[item])
+                result += sO[item] -1;
+            }
+        }
+    }
+    //*/
+    // special case, no odd number of alphabet exist. -> result --
+    let oddExist = 0;
+    for(item of new Set(sA)){
+        if(sO[item] %2 !=0){
+            oddExist =1;
+            break;
+        }
+    }
+    if(oddExist == 0) result--;
+    return result
+};
+
