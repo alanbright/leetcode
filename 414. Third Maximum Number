@@ -1,0 +1,58 @@
+var thirdMax = function(nums) {
+    let [first , second, third] = [null, null, null];
+    //console.log(first , second, third);
+    for(item of new Set(nums)){
+        //console.log("item",item)
+        //console.log(first , second, third);
+        if(first == null){
+            first = item;   
+        }else if(first != null && second == null){
+            if(item > first){
+                [first, second] = [item, first]
+            }else{
+                second = item;
+            }
+        }else if(first != null && second != null && third == null){
+            if(item > first){
+                [first, second, third] = [item, first, second]
+            }else if(item > second){
+                [second, third] = [item, second];
+            }else{
+                third = item;
+            }
+        }else if(first != null && second != null && third != null){
+            if(item > first){
+                [first, second, third] = [item, first, second]
+            }else if(item > second){
+                [second, third] = [item, second];
+            }else if(item > third){
+                third = item;
+            }
+        }
+    }
+    console.log(first , second, third);
+    return (third != null) ? third : first
+};
+
+/*
+var thirdMax = function(nums) {
+    let [f, s, t] = Array(3).fill(-Infinity);
+    
+    nums.forEach((num) => {
+        if (num > f) {
+            t = s;
+            s = f;
+            f = num
+        } else if (num > s && num < f) {
+            t = s;
+            s = num;
+        } else if (num > t && num < s) {
+            t = num;
+        }
+    });
+    
+    return t === -Infinity ? f : t
+};
+
+
+*/
