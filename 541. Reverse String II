@@ -1,0 +1,33 @@
+var reverseStr = function(s, k) {
+    let result = [];
+    let tempStack = [];
+    for(let i=0;i<s.length;i++){
+        if( (i%(2*k)) < k){
+            //console.log("need reverse", s[i]);
+            tempStack.push(s[i]);
+            if( ((i%(2*k))==k-1) || i==s.length-1){
+                //console.log("check reverse",tempStack.reverse());
+                tempStack = tempStack.reverse()
+                result = result.concat(tempStack);
+                //result = result.concat(tempStack.reverse());
+                tempStack = [];
+            }
+        }else{
+            result.push(s[i])
+        }
+    }
+    return result.join('');
+};
+
+/*
+"abcdefghijklmnopqrstuvwxyz"
+
+3
+012  345
+123, 456, 789, 101112
+k=3
+0 = 2k*0
+6 = 2k*1
+12 = 2k*2
+18 = 2k*3
+*/
