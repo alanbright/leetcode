@@ -1,0 +1,26 @@
+var isPalindrome = function(s) {
+    let n = s.replace(/\W/g,'').toLowerCase();
+    let end = n.length - 1
+    let start = 0
+    while(end>start){
+        if (n[end]!=n[start]){
+            return false
+        }
+        end--
+        start++
+    }
+    return true;
+};
+
+var validPalindrome = function(s) {
+    let sA = s.split('');
+    let record = [...sA];
+    if(isPalindrome(s)) return true;
+    for(i=0;i<s.length;i++){
+        let temp = [...record];
+        temp.splice(i,1);
+        if(isPalindrome(temp.join('')))
+            return true;
+    }
+    return false;
+};
