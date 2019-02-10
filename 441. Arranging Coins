@@ -8,3 +8,7 @@ var arrangeCoins = function(n) {
         }
     }
 };
+
+/*
+https://leetcode.com/problems/arranging-coins/discuss/162814/Python-O(1)-Math-Solution-Fully-Explained
+*/
