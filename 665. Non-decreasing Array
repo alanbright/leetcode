@@ -1,0 +1,20 @@
+var checkPossibility = function(nums) {
+    let record = [...nums];//deep copy
+    //https://stackoverflow.com/questions/9592740/how-can-you-sort-an-array-without-mutating-the-original-array
+    //console.log('record',record,'nums',nums)
+    if(nums.join('') === nums.sort(function(a,b){return a-b}).join('')) return true;
+    //console.log('record',record)
+    //console.log('record',record,'nums',nums)
+    for(i=0;i<nums.length;i++){
+        let tempNum = [...record];
+        let left = tempNum.splice(i, 1);
+        //console.log('tempNum',tempNum)
+        if(tempNum.join('') === tempNum.sort(function(a,b){return a-b}).join('')) return true;
+    }
+    return false
+};
+
+/*
+Time Limit Exceeded
+https://leetcode.com/submissions/detail/206876268/testcase/
+*/
