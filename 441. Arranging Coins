@@ -1,0 +1,10 @@
+var arrangeCoins = function(n) {
+    if(n==0) return 0;
+    if(n==1) return 1;
+    
+    for(let i=1; i<Infinity;i++){
+        if( ((1+i)*i)/2 <= n && n < ((1+(i+1))*(i+1))/2){
+            return i
+        }
+    }
+};
