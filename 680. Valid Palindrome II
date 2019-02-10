@@ -24,3 +24,10 @@ var validPalindrome = function(s) {
     }
     return false;
 };
+
+
+/*
+Time Limit Exceeded
+
+https://leetcode.com/submissions/detail/206878496/testcase/
+*/
