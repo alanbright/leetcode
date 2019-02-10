@@ -1,0 +1,12 @@
+var maximumProduct = function(nums) {
+    let sortNums = nums.sort(function(a, b){return b-a});
+    //console.log(sortNums)
+    let sortAbsNegNums = nums.filter(x => {return x<0}).sort(function(a, b){return a-b});
+    //console.log(sortAbsNegNums);
+    if(sortAbsNegNums.length <2){
+        return sortNums[0]*sortNums[1]*sortNums[2];
+    }else{
+        return Math.max(sortNums[0]*sortNums[1]*sortNums[2] , sortNums[0]*sortAbsNegNums[0]*sortAbsNegNums[1])
+    }
+    
+};
