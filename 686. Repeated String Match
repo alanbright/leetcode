@@ -1,0 +1,23 @@
+var repeatedStringMatch = function(A, B) {
+    let temp = '';
+    let result = 0;
+    while(temp.length < B.length){
+        temp = temp+A;
+        result++;
+        //console.log('test',temp)
+    }
+    //console.log(temp);
+    
+    while(temp.length < 10001){
+        if(temp.includes(B)){
+            return result;
+        }
+        temp = temp+A;
+        result++;
+    }
+    //final check
+    if(temp.includes(B)){
+        return result;
+    }
+    return -1;
+};
