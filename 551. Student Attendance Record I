@@ -1,0 +1,18 @@
+var checkRecord = function(s) {
+    let Acount=0;
+    let Lcount=0;
+    for(let i=0;i<s.length;i++){
+        if(s[i]=='A'){
+            Acount++;
+            if(Acount > 1) return false
+            Lcount=0;
+        }else if(s[i]=='L'){
+            Lcount++;
+            if(Lcount > 2) return false
+        }else{
+            Lcount=0;
+        }
+    }
+    return true
+};
+
