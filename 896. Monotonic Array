@@ -1,0 +1,17 @@
+var isMonotonic = function(A) {
+    if(A.length < 2) return true;
+    if(new Set(A).size == 1) return true;//all equal case
+    let [up, down]=[false,false];
+    for(let i=1;i<A.length;i++){
+        if(A[i-1] < A[i]){
+            if(down) return false;
+            up=true;            
+        }else if(A[i-1] > A[i]){
+            if(up) return false;
+            down=true;
+        }else{
+            //equal case
+        }
+    }
+    return up||down
+};
